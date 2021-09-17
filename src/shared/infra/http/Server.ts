@@ -1,5 +1,11 @@
-import express, { Express } from 'express'
+import 'dotenv/config'
+import 'reflect-metadata'
+import 'express-async-errors'
+
 import cors from 'cors'
+import express, { Express, NextFunction, Request, Response } from 'express'
+
+import ApiError from '@shared/errors/ApiError'
 
 export default class Server {
   private api: Express
@@ -8,6 +14,8 @@ export default class Server {
     this.api = express()
 
     this.middlewares()
+
+    this.handleErrors()
   }
 
   private middlewares() {
@@ -20,5 +28,28 @@ export default class Server {
       // eslint-disable-next-line
       console.log(`listening in port ${port} 💎`)
     })
+  }
+
+  private handleErrors() {
+    this.api.use(
+      (error: Error, _: Request, response: Response, __: NextFunction) => {
+        if (error instanceof ApiError) {
+          const { statusCode, message } = error
+
+          return response.status(statusCode).json({
+            status: 'error',
+            message
+          })
+        }
+
+        // eslint-disable-next-line
+        console.log(error)
+
+        return response.status(500).json({
+          status: 500,
+          message: 'Internal server error'
+        })
+      }
+    )
   }
 }
