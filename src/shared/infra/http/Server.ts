@@ -5,6 +5,7 @@ import 'express-async-errors'
 import cors from 'cors'
 import express, { Express, NextFunction, Request, Response } from 'express'
 
+import '@shared/infra/typeorm'
 import ApiError from '@shared/errors/ApiError'
 
 export default class Server {

@@ -5,13 +5,13 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist",
-    "docker:build": "docker-compose build",
-    "docker:up": "docker-compose up -d",
+    "docker:up": "docker-compose up -d --build",
     "docker:down": "docker-compose down",
     "start:dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_module src/shared/infra/http",
     "start:prod": "node dist/shared/infra/http",
     "deploy": "docker-compose build && docker-compose up -d && clear && echo 'Successfully deployed'",
-    "test": "jest"
+    "test": "jest",
+    "typeorm": "tsnd -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/config/ormconfig.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -35,6 +35,9 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
-    "reflect-metadata": "^0.1.13"
+    "pg": "^8.7.1",
+    "postgres": "^1.0.2",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.37"
   }
 }
