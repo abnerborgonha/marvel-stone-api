@@ -8,7 +8,7 @@ const isDevelopment = process.env.API_ENVIRONMENT === 'development'
 const config: ConnectionOptions = {
   name: 'default',
   type: 'postgres',
-  host: 'localhost',
+  host: isDevelopment ? 'localhost' : 'postgres',
   port: Number(process.env.DATABASE_PORT),
   username: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,

@@ -11,3 +11,12 @@ services:
             POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
         ports:
             - '${DATABASE_PORT}:5432'
+    api:
+      build: .
+      container_name: marvel-stone-api
+      restart: unless-stopped
+      links:
+        - "postgres"
+      command: yarn start:prod
+      ports:
+        - ${API_PORT}:3333
