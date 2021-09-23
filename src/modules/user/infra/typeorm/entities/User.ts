@@ -20,7 +20,7 @@ export default class User {
 
   @Column()
   @Exclude()
-  password_hash: string
+  password: string
 
   @CreateDateColumn()
   created_at: Date

@@ -6,18 +6,15 @@ import IUserRepository from '../IUsersRepository'
 export default class FakeUsersRepository implements IUserRepository {
   private fakeUsers: User[] = []
 
-  private generatedId: User['id']
-
-  constructor() {
-    this.generatedId = String(Date.now())
-  }
-
   async create(data: ICreateUserDTO): Promise<User> {
     const createdUser = new User()
 
+    const id = String(Date.now() + Math.floor(Math.random() * 12))
+
     Object.assign(createdUser, {
       ...data,
-      id: this.generatedId,
+      id,
+      password: data.password,
       created_at: new Date(),
       updated_at: new Date()
     })

@@ -15,7 +15,7 @@ describe('FindUserByIdService', () => {
     findUserByIdService = new FindUserByIdService(fakeUsersRepository)
   })
 
-  it('Shold be able to show the user.', async () => {
+  it('Should be able to show the user.', async () => {
     const user = await fakeUsersRepository.create({
       name: 'Jhon Doe',
       email: 'jhondoe@email.com',
@@ -27,7 +27,7 @@ describe('FindUserByIdService', () => {
     expect(foundUser).toBeInstanceOf(User)
   })
 
-  it('Shold not be able to show the user if id not exist.', async () => {
+  it('Should not be able to show a non-existent user.', async () => {
     await expect(
       findUserByIdService.execute('id_not_exist')
     ).rejects.toBeInstanceOf(ApiError)

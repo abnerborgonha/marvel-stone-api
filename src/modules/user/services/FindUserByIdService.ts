@@ -15,7 +15,7 @@ export default class FindUserByIdService {
   async execute(userId: User['id']): Promise<User> {
     const foundUser = await this.UsersRepository.findById(userId)
 
-    if (!foundUser) throw new ApiError('User not found', 404)
+    if (!foundUser) throw new ApiError('User not found.', 404)
 
     return foundUser
   }

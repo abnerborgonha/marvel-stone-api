@@ -27,7 +27,7 @@ describe('CreateUserService', () => {
 
     expect(user).toHaveProperty('id')
     expect(user.email).toEqual('jhondoe@email.com')
-    expect(user.password_hash !== 'password123').toBeTruthy()
+    expect(user.password === 'password123').toBeTruthy()
   })
 
   it('Should not be able to create a new user with an existent email.', async () => {

@@ -3,6 +3,7 @@ import { getRepository, Repository } from 'typeorm'
 import ICreateUserDTO from '@modules/user/dtos/ICreateUserDTO'
 import IUsersRepository from '@modules/user/repositories/IUsersRepository'
 
+import IUpdateUserDTO from '@modules/user/dtos/IUpdateUserDTO'
 import User from '../entities/User'
 
 export default class UsersRepository implements IUsersRepository {
@@ -34,7 +35,7 @@ export default class UsersRepository implements IUsersRepository {
     return user
   }
 
-  async save(user: User): Promise<User> {
+  async save(user: IUpdateUserDTO): Promise<User> {
     const savedUser = await this.ormRepository.save(user)
 
     return savedUser
