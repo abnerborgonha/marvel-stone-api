@@ -3,7 +3,7 @@ version: '3.9'
 services:
     postgres:
         container_name: ${DATABASE_NAME}
-        image: postgres:11
+        image: postgres:latest
         restart: unless-stopped
         environment:
             POSTGRES_DB: ${DATABASE_NAME}
@@ -11,12 +11,4 @@ services:
             POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
         ports:
             - '${DATABASE_PORT}:5432'
-    api:
-      build: .
-      container_name: marvel-stone-api
-      restart: unless-stopped
-      links:
-        - "postgres"
-      command: yarn start:prod
-      ports:
-        - ${API_PORT}:3333
+      

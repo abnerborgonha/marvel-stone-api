@@ -20,8 +20,8 @@ const config: ConnectionOptions = {
   ],
   migrations: [
     isDevelopment
-      ? './src/shared/**/infra/typeorm/migrations/*.js'
-      : './dist/shared/**/infra/typeorm/migrations/*.ts'
+      ? './src/shared/**/infra/typeorm/migrations/*.ts'
+      : './dist/shared/**/infra/typeorm/migrations/*.js'
   ],
   cli: {
     migrationsDir: isDevelopment
