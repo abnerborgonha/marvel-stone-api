@@ -1,9 +1,9 @@
 import { getRepository, Repository } from 'typeorm'
 
-import ICreateUserDTO from '@modules/user/dtos/ICreateUserDTO'
-import IUsersRepository from '@modules/user/repositories/IUsersRepository'
+import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO'
+import IUsersRepository from '@modules/users/repositories/IUsersRepository'
 
-import IUpdateUserDTO from '@modules/user/dtos/IUpdateUserDTO'
+import IUpdateUserDTO from '@modules/users/dtos/IUpdateUserDTO'
 import User from '../entities/User'
 
 export default class UsersRepository implements IUsersRepository {

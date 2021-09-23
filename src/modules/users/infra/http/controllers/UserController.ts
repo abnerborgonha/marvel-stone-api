@@ -1,10 +1,10 @@
 import { Request, Response } from 'express'
 import { classToClass } from 'class-transformer'
 
-import CreateUserService from '@modules/user/services/CreateUserService'
-import UpdateUserService from '@modules/user/services/UpdateUserService'
-import DeleteUserService from '@modules/user/services/DeleteUserService'
-import FindUserByIdService from '@modules/user/services/FindUserByIdService'
+import CreateUserService from '@modules/users/services/CreateUserService'
+import UpdateUserService from '@modules/users/services/UpdateUserService'
+import DeleteUserService from '@modules/users/services/DeleteUserService'
+import FindUserByIdService from '@modules/users/services/FindUserByIdService'
 
 import { container } from 'tsyringe'
 
