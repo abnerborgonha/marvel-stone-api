@@ -8,7 +8,7 @@ import IUserRepository from '../repositories/IUsersRepository'
 import IHashProvider from '../providers/HashProvider/models/IHashProvider'
 
 @injectable()
-export default class SaveUserService {
+export default class UpdateUserService {
   constructor(
     @inject('UsersRepository')
     private UsersRepository: IUserRepository,

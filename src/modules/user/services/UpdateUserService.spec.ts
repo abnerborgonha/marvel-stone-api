@@ -1,19 +1,22 @@
 import ApiError from '@shared/errors/ApiError'
 
-import SaveUserService from './SaveUserService'
+import UpdateUserService from './UpdateUserService'
 
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository'
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider'
 
 let fakeHashProvider: FakeHashProvider
-let saveUserService: SaveUserService
+let saveUserService: UpdateUserService
 let fakeUsersRepository: FakeUsersRepository
 
-describe('SaveUserService', () => {
+describe('UpdateUserService', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository()
     fakeHashProvider = new FakeHashProvider()
-    saveUserService = new SaveUserService(fakeUsersRepository, fakeHashProvider)
+    saveUserService = new UpdateUserService(
+      fakeUsersRepository,
+      fakeHashProvider
+    )
   })
 
   it('Should be able to update the user.', async () => {
