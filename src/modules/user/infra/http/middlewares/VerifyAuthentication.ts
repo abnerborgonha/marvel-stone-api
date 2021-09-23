@@ -20,7 +20,7 @@ export default class VerifyAuthentication {
 
     if (!authHeader) throw new ApiError('JWT token is missing', 401)
 
-    const [, token] = authHeader.split('')
+    const [, token] = authHeader.split(' ')
 
     try {
       const decoded = this.tokenProvider.verify(token, authConfig.jwt.secret)

@@ -3,6 +3,7 @@ import 'reflect-metadata'
 import 'express-async-errors'
 
 import cors from 'cors'
+import { errors } from 'celebrate'
 import express, { Express, NextFunction, Request, Response } from 'express'
 
 import '@shared/infra/typeorm'
@@ -10,6 +11,8 @@ import '@shared/infra/typeorm'
 import '@shared/container'
 
 import ApiError from '@shared/errors/ApiError'
+
+import routes from './routes'
 
 export default class Server {
   private api: Express
@@ -19,12 +22,18 @@ export default class Server {
 
     this.middlewares()
 
+    this.routes()
+
     this.handleErrors()
   }
 
   private middlewares() {
     this.api.use(cors())
     this.api.use(express.json())
+  }
+
+  private routes() {
+    this.api.use('/v1', routes)
   }
 
   start(port: number) {
@@ -35,6 +44,8 @@ export default class Server {
   }
 
   private handleErrors() {
+    this.api.use(errors())
+
     this.api.use(
       (error: Error, _: Request, response: Response, __: NextFunction) => {
         if (error instanceof ApiError) {

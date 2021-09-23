@@ -42,7 +42,13 @@ export default class FakeUsersRepository implements IUserRepository {
     this.fakeUsers = filteredFakeUsers
   }
 
-  async save(data: User): Promise<User> {
-    return data
+  async save(user_id: User['id'], data: User): Promise<User | undefined> {
+    this.fakeUsers = this.fakeUsers.map(user =>
+      user.id === user_id ? { ...user, ...data, updated_at: new Date() } : user
+    )
+
+    const foundUser = this.fakeUsers.find(user => user.id === user_id)
+
+    return foundUser
   }
 }

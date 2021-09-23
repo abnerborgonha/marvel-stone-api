@@ -35,10 +35,12 @@ export default class UsersRepository implements IUsersRepository {
     return user
   }
 
-  async save(user: IUpdateUserDTO): Promise<User> {
-    const savedUser = await this.ormRepository.save(user)
+  async save(user_id: string, user: IUpdateUserDTO): Promise<User | undefined> {
+    await this.ormRepository.update(user_id, { ...user })
 
-    return savedUser
+    const foundUser = await this.ormRepository.findOne(user_id)
+
+    return foundUser
   }
 
   async delete(user_id: User['id']) {

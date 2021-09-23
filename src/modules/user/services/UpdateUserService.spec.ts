@@ -31,8 +31,8 @@ describe('UpdateUserService', () => {
       email: 'john@example.com'
     })
 
-    expect(updatedUser.name).toBe('John')
-    expect(updatedUser.email).toBe('john@example.com')
+    expect(updatedUser?.name).toBe('John')
+    expect(updatedUser?.email).toBe('john@example.com')
   })
 
   it('Should be able to update the user password.', async () => {
@@ -47,7 +47,7 @@ describe('UpdateUserService', () => {
       old_password: 'password123'
     })
 
-    expect(updatedUser.password).toBe('new-password')
+    expect(updatedUser?.password).toBe('new-password')
   })
 
   it('Should not be able to update a non-existent user', async () => {

@@ -16,7 +16,10 @@ export default class UpdateUserService {
     private HashProvider: IHashProvider
   ) {}
 
-  async execute(user_id: string, data: IUpdateUserDTO): Promise<User> {
+  async execute(
+    user_id: string,
+    data: IUpdateUserDTO
+  ): Promise<User | undefined> {
     const { email, old_password, password: new_password } = data
 
     const foundUser = await this.UsersRepository.findById(user_id)
@@ -44,7 +47,9 @@ export default class UpdateUserService {
       data.password = await this.HashProvider.generateHash(new_password)
     }
 
-    const updatedUser = await this.UsersRepository.save(data)
+    delete data.old_password
+
+    const updatedUser = await this.UsersRepository.save(user_id, data)
 
     return updatedUser
   }
