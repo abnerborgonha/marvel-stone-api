@@ -21,7 +21,7 @@ export default class UpdateUserService {
 
     const foundUser = await this.UsersRepository.findById(user_id)
 
-    if (!foundUser) throw new ApiError('User does not exist.', 400)
+    if (!foundUser) throw new ApiError('User does not exist.', 404)
 
     if (email) {
       const foundExistentEmail = await this.UsersRepository.findByEmail(email)
