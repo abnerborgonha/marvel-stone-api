@@ -1,5 +1,5 @@
 TN:
-SF:src/modules/user/services/AuthenticateUserService.ts
+SF:src/modules/users/services/AuthenticateUserService.ts
 FN:24,(anonymous_5)
 FN:35,(anonymous_6)
 FNF:2
@@ -33,7 +33,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:src/modules/user/services/CreateUserService.ts
+SF:src/modules/users/services/CreateUserService.ts
 FN:14,(anonymous_5)
 FN:22,(anonymous_6)
 FNF:2
@@ -59,7 +59,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:src/modules/user/services/DeleteUserService.ts
+SF:src/modules/users/services/DeleteUserService.ts
 FN:8,(anonymous_5)
 FN:13,(anonymous_6)
 FNF:2
@@ -81,7 +81,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:src/modules/user/services/FindUserByIdService.ts
+SF:src/modules/users/services/FindUserByIdService.ts
 FN:10,(anonymous_5)
 FN:15,(anonymous_6)
 FNF:2
@@ -103,7 +103,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:src/modules/user/services/UpdateUserService.ts
+SF:src/modules/users/services/UpdateUserService.ts
 FN:12,(anonymous_5)
 FN:19,(anonymous_6)
 FNF:2
@@ -130,8 +130,9 @@ DA:45,1
 DA:47,1
 DA:50,2
 DA:52,2
-LF:20
-LH:20
+DA:54,2
+LF:21
+LH:21
 BRDA:27,0,0,1
 BRDA:27,0,1,4
 BRDA:29,1,0,3
