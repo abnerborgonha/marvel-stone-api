@@ -4,8 +4,15 @@ import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepo
 import IUsersRepository from '@modules/users/repositories/IUsersRepository'
 
 import './providers'
+import IFavoriteComicRepository from '@modules/comics/repositories/IFavoriteComicRepository'
+import FavoriteComicRepository from '@modules/comics/infra/typeorm/repositories/FavoriteComicRepository'
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository
+)
+
+container.registerSingleton<IFavoriteComicRepository>(
+  'FavoriteComicRepository',
+  FavoriteComicRepository
 )

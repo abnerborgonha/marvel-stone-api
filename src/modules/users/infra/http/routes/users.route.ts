@@ -5,15 +5,13 @@ import { celebrate, Joi, Segments } from 'celebrate'
 import UserController from '../controllers/UserController'
 import VerifyAuthentication from '../middlewares/VerifyAuthentication'
 
-const UsersRouter = Router()
+const usersRouter = Router()
 
 const userController = new UserController()
 
 const verifyAuthentication = container.resolve(VerifyAuthentication)
 
-UsersRouter.get('/:id', verifyAuthentication.execute, userController.show)
-
-UsersRouter.post(
+usersRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
@@ -25,7 +23,13 @@ UsersRouter.post(
   userController.create
 )
 
-UsersRouter.patch(
+usersRouter.use((request, response, next) =>
+  verifyAuthentication.execute(request, response, next)
+)
+
+usersRouter.get('/:id', userController.show)
+
+usersRouter.patch(
   '/:id',
   celebrate({
     [Segments.BODY]: Joi.object()
@@ -40,6 +44,6 @@ UsersRouter.patch(
   userController.update
 )
 
-UsersRouter.delete('/:id', userController.delete)
+usersRouter.delete('/:id', userController.delete)
 
-export default UsersRouter
+export default usersRouter
