@@ -29,7 +29,7 @@ export default class FavoriteComicsRepository
     return createdFavoriteComic
   }
 
-  async findAll(user_id: User['id']): Promise<FavoriteComic[] | undefined> {
+  async findAll(user_id: User['id']): Promise<FavoriteComic[]> {
     const foundFavoriteComics = await this.ormRepository.find({
       where: {
         user_id
