@@ -30,7 +30,7 @@ export default class FakeFavoriteComicsRepository
     return createdFavoriteComic
   }
 
-  async findAll(user_id: User['id']): Promise<FavoriteComic[] | undefined> {
+  async findAll(user_id: User['id']): Promise<FavoriteComic[]> {
     const foundFavoriteComics = this.fakeFavoriteComics.filter(
       comics => comics.user_id === user_id
     )
