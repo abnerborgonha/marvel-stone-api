@@ -2,8 +2,8 @@ import { Router } from 'express'
 import { container } from 'tsyringe'
 import { celebrate, Joi, Segments } from 'celebrate'
 
+import VerifyAuthentication from '@shared/infra/http/middlewares/VerifyAuthentication'
 import UserController from '../controllers/UserController'
-import VerifyAuthentication from '../middlewares/VerifyAuthentication'
 
 const usersRouter = Router()
 
