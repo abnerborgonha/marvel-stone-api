@@ -38,6 +38,17 @@ export default class FakeFavoriteComicsRepository
     return foundFavoriteComics
   }
 
+  async findById(
+    comic_id: FavoriteComic['id'],
+    user_id: User['id']
+  ): Promise<FavoriteComic | undefined> {
+    const foundFavoriteComic = this.fakeFavoriteComics.find(
+      comic => comic.id === comic_id && comic.user_id === user_id
+    )
+
+    return foundFavoriteComic
+  }
+
   async findByMarvelId(
     marvel_id: FavoriteComic['marvel_comic_id'],
     user_id: User['id']

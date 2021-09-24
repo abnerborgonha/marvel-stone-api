@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for users/services/CreateUserService.ts</title>
+    <title>Code coverage report for comics/services/ShowFavoriteComicService.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">users/services</a> CreateUserService.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">comics/services</a> ShowFavoriteComicService.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -93,9 +93,22 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,71 +117,52 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { inject, injectable } from 'tsyringe'
 &nbsp;
+import User from '@modules/users/infra/typeorm/entities/User'
+import IUserRepository from '@modules/users/repositories/IUsersRepository'
+&nbsp;
 import ApiError from '@shared/errors/ApiError'
+import FavoriteComic from '../infra/typeorm/entities/FavoriteComic'
 &nbsp;
-import User from '../infra/typeorm/entities/User'
-&nbsp;
-import ICreateUserDTO from '../dtos/ICreateUserDTO'
-&nbsp;
-import IUserRepository from '../repositories/IUsersRepository'
-import IHashProvider from '../providers/HashProvider/models/IHashProvider'
+import IFavoriteComicRepository from '../repositories/IFavoriteComicRepository'
 &nbsp;
 @injectable()
-export default class CreateUserService {
+export default class ShowFavoriteComicService {
   constructor(
-    @inject('UsersRepository')
-    private UsersRepository: IUserRepository,
+    @inject('FavoriteComicRepository')
+    private FavoriteComicRepository: IFavoriteComicRepository,
 &nbsp;
-    @inject('HashProvider')
-    private HashProvider: IHashProvider
+    @inject('UsersRepository')
+    private UsersRepository: IUserRepository
   ) {}
 &nbsp;
-  async execute(data: ICreateUserDTO): Promise&lt;User&gt; {
-    const { email, password } = data
+  async execute(
+    user_id: User['id'],
+    marvel_comic_id: FavoriteComic['id']
+  ): Promise&lt;FavoriteComic | undefined&gt; {
+    const foundUser = await this.UsersRepository.findById(user_id)
 &nbsp;
-    const foundUserByEmail = await this.UsersRepository.findByEmail(email)
+    if (!foundUser) throw new ApiError('User does not exists.', 404)
 &nbsp;
-    if (foundUserByEmail) throw new ApiError('Email already exists.', 400)
+    const foundFavoriteComic = await this.FavoriteComicRepository.findById(
+      marvel_comic_id,
+      user_id
+    )
 &nbsp;
-    const hashedPassword = await this.HashProvider.generateHash(password)
-&nbsp;
-    const createdUser = await this.UsersRepository.create({
-      ...data,
-      password: hashedPassword
-    })
-&nbsp;
-    return createdUser
+    return foundFavoriteComic
   }
 }
 &nbsp;</pre></td></tr></table></pre>
