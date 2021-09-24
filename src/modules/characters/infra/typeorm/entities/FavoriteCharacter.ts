@@ -16,7 +16,7 @@ export default class FavoriteCharacter {
   id: string
 
   @Column()
-  marvel_comic_id: string
+  marvel_character_id: string
 
   @ManyToOne(() => User)
   @Exclude()

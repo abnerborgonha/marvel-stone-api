@@ -70,15 +70,4 @@ export default class FavoriteComicsRepository
   async delete(comic_id: FavoriteComic['id']): Promise<void> {
     await this.ormRepository.delete(comic_id)
   }
-
-  async save(
-    comic_id: FavoriteComic['id'],
-    data: ICreateFavoriteComicDTO
-  ): Promise<FavoriteComic | undefined> {
-    await this.ormRepository.update(comic_id, { ...data })
-
-    const foundFavoriteComic = this.ormRepository.findOne(comic_id)
-
-    return foundFavoriteComic
-  }
 }

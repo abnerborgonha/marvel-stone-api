@@ -19,7 +19,7 @@ charactersRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      marvel_comic_id: Joi.string().required()
+      marvel_character_id: Joi.string().required()
     }
   }),
   comicController.create

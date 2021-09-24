@@ -1,3 +1,3 @@
 export default interface ICreateFavoriteCharacterDTO {
-  marvel_comic_id: string
+  marvel_character_id: string
 }

@@ -30,7 +30,7 @@ describe('ShowFavoriteCharacterService', () => {
     const { id } = fakeUser
 
     const { id: comic_id } = await fakeFavoriteCharactersRepository.create(id, {
-      marvel_comic_id: 'marvel_comic_id'
+      marvel_character_id: 'marvel_character_id'
     })
 
     const foundFavoriteCharacter = await showFavoriteCharacterService.execute(
@@ -45,7 +45,7 @@ describe('ShowFavoriteCharacterService', () => {
     const { id } = fakeUser
 
     const { id: comic_id } = await fakeFavoriteCharactersRepository.create(id, {
-      marvel_comic_id: 'marvel_comic_id'
+      marvel_character_id: 'marvel_character_id'
     })
 
     await expect(

@@ -11,7 +11,7 @@ export default class FakeFavoriteCharactersRepository
 
   async create(
     user_id: User['id'],
-    { marvel_comic_id }: ICreateFavoriteFavoriteCharacterDTO
+    { marvel_character_id }: ICreateFavoriteFavoriteCharacterDTO
   ): Promise<FavoriteCharacter> {
     const createdFavoriteCharacter = new FavoriteCharacter()
 
@@ -19,7 +19,7 @@ export default class FakeFavoriteCharactersRepository
 
     Object.assign(createdFavoriteCharacter, {
       id,
-      marvel_comic_id,
+      marvel_character_id,
       user_id,
       created_at: new Date(),
       updated_at: new Date()
@@ -50,11 +50,12 @@ export default class FakeFavoriteCharactersRepository
   }
 
   async findByMarvelId(
-    marvel_id: FavoriteCharacter['marvel_comic_id'],
+    marvel_id: FavoriteCharacter['marvel_character_id'],
     user_id: User['id']
   ): Promise<FavoriteCharacter | undefined> {
     const foundFavoriteCharacter = this.fakeFavoriteCharacters.find(
-      comic => comic.marvel_comic_id === marvel_id && comic.user_id === user_id
+      comic =>
+        comic.marvel_character_id === marvel_id && comic.user_id === user_id
     )
 
     return foundFavoriteCharacter

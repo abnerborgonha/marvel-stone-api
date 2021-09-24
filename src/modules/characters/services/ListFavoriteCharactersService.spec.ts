@@ -32,7 +32,7 @@ describe('ListFavoriteCharactersService', () => {
     await Promise.all(
       Array.from({ length: 10 }).map(position =>
         fakeFavoriteCharactersRepository.create(id, {
-          marvel_comic_id: `marvel_comic_id_${position}`
+          marvel_character_id: `marvel_character_id_${position}`
         })
       )
     )

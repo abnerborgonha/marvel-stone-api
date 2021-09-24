@@ -30,24 +30,24 @@ describe('CreateFavoriteCharacterService', () => {
     const { id } = fakeUser
 
     const createdComic = await createFavoriteCharacterService.execute(id, {
-      marvel_comic_id: 'marvel_comic_id'
+      marvel_character_id: 'marvel_character_id'
     })
 
     expect(createdComic).toHaveProperty('id')
     expect(createdComic.user_id).toEqual(id)
-    expect(createdComic.marvel_comic_id).toEqual('marvel_comic_id')
+    expect(createdComic.marvel_character_id).toEqual('marvel_character_id')
   })
 
-  it('Should not be able to create a new favorite comic to with an existent marvel_comic_id', async () => {
+  it('Should not be able to create a new favorite comic to with an existent marvel_character_id', async () => {
     const { id } = fakeUser
 
     await fakeFavoriteCharactersRepository.create(id, {
-      marvel_comic_id: 'marvel_comic_id'
+      marvel_character_id: 'marvel_character_id'
     })
 
     await expect(
       createFavoriteCharacterService.execute(id, {
-        marvel_comic_id: 'marvel_comic_id'
+        marvel_character_id: 'marvel_character_id'
       })
     ).rejects.toBeInstanceOf(ApiError)
   })
@@ -55,7 +55,7 @@ describe('CreateFavoriteCharacterService', () => {
   it('Should not be able to create a new favorite comic to an unexistent user', async () => {
     await expect(
       createFavoriteCharacterService.execute('non_existent_user', {
-        marvel_comic_id: 'marvel_comic_id'
+        marvel_character_id: 'marvel_character_id'
       })
     ).rejects.toBeInstanceOf(ApiError)
   })

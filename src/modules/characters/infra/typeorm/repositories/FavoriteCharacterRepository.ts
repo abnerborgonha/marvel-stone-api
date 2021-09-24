@@ -17,10 +17,10 @@ export default class FavoriteCharactersRepository
 
   async create(
     user_id: User['id'],
-    { marvel_comic_id }: ICreateFavoriteCharacterDTO
+    { marvel_character_id }: ICreateFavoriteCharacterDTO
   ): Promise<FavoriteCharacter> {
     const createdFavoriteCharacter = this.ormRepository.create({
-      marvel_comic_id,
+      marvel_character_id,
       user_id
     })
 
@@ -29,7 +29,7 @@ export default class FavoriteCharactersRepository
     return createdFavoriteCharacter
   }
 
-  async findAll(user_id: User['id']): Promise<FavoriteCharacter[] | undefined> {
+  async findAll(user_id: User['id']): Promise<FavoriteCharacter[]> {
     const foundFavoriteCharacters = await this.ormRepository.find({
       where: {
         user_id

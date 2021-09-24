@@ -16,7 +16,6 @@ export default class FavoriteCharacterController {
     const showFavoriteCharacter = container.resolve(
       ShowFavoriteCharacterService
     )
-    user_id, id
 
     const foundFavoriteCharacter = await showFavoriteCharacter.execute(
       user_id,
@@ -37,7 +36,7 @@ export default class FavoriteCharacterController {
   }
 
   async create(request: Request, response: Response): Promise<Response> {
-    const { marvel_comic_id } = request.body
+    const { marvel_character_id } = request.body
     const { id } = request.user
 
     const createFavoriteCharacter = container.resolve(
@@ -45,11 +44,10 @@ export default class FavoriteCharacterController {
     )
 
     const comic = await createFavoriteCharacter.execute(id, {
-      marvel_comic_id
+      marvel_character_id
     })
 
     return response.json(classToClass(comic))
-    DeleteFavoriteCharacterService
   }
 
   async delete(request: Request, response: Response): Promise<Response> {

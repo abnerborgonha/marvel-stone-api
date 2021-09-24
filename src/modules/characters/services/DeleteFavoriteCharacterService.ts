@@ -20,14 +20,17 @@ export default class DeleteFavoriteCharacterService {
 
   async execute(
     user_id: User['id'],
-    marvel_comic_id: FavoriteCharacter['id']
+    marvel_character_id: FavoriteCharacter['id']
   ): Promise<void> {
     const foundUser = await this.UsersRepository.findById(user_id)
 
     if (!foundUser) throw new ApiError('User does not exists.', 404)
 
     const foundFavoriteCharacter =
-      await this.FavoriteCharacterRepository.findById(marvel_comic_id, user_id)
+      await this.FavoriteCharacterRepository.findById(
+        marvel_character_id,
+        user_id
+      )
 
     if (!foundFavoriteCharacter)
       throw new ApiError('Comic does not exists.', 404)

@@ -30,7 +30,7 @@ describe('DeleteFavoriteCharacterService', () => {
     const { id } = fakeUser
 
     const { id: comic_id } = await fakeFavoriteCharactersRepository.create(id, {
-      marvel_comic_id: 'marvel_comic_id'
+      marvel_character_id: 'marvel_character_id'
     })
 
     await deleteFavoriteCharacterService.execute(id, comic_id)
@@ -47,7 +47,7 @@ describe('DeleteFavoriteCharacterService', () => {
     const { id } = fakeUser
 
     const { id: comic_id } = await fakeFavoriteCharactersRepository.create(id, {
-      marvel_comic_id: 'marvel_comic_id'
+      marvel_character_id: 'marvel_character_id'
     })
 
     await expect(

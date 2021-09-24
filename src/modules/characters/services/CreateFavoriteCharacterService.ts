@@ -22,7 +22,7 @@ export default class CreateFavoriteCharacterService {
 
   async execute(
     user_id: User['id'],
-    { marvel_comic_id }: ICreateFavoriteCharacterDTO
+    { marvel_character_id }: ICreateFavoriteCharacterDTO
   ): Promise<FavoriteCharacter> {
     const foundUser = await this.UsersRepository.findById(user_id)
 
@@ -30,7 +30,7 @@ export default class CreateFavoriteCharacterService {
 
     const foundExistentFavoriteCharacter =
       await this.FavoriteCharacterRepository.findByMarvelId(
-        marvel_comic_id,
+        marvel_character_id,
         user_id
       )
 
@@ -39,7 +39,7 @@ export default class CreateFavoriteCharacterService {
 
     const createdFavoriteCharacter =
       await this.FavoriteCharacterRepository.create(user_id, {
-        marvel_comic_id
+        marvel_character_id
       })
 
     return createdFavoriteCharacter

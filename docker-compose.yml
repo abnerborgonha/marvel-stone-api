@@ -10,5 +10,17 @@ services:
             POSTGRES_USER: ${DATABASE_USER}
             POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
         ports:
-            - '${DATABASE_PORT}:5432'
+            - ${DATABASE_PORT}:5432
+
+    api:
+        build: .
+        container_name: marvel_stone_api
+        restart: unless-stopped
+        ports: 
+            - ${API_PORT}:3333
+        command:
+            - yarn start:prod
+        depends_on: 
+            - postgres
+            
       

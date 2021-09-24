@@ -65,19 +65,4 @@ export default class FakeFavoriteComicsRepository
       comic => comic.id !== comic_id
     )
   }
-
-  async save(
-    comic_id: FavoriteComic['id'],
-    data: ICreateFavoriteFavoriteComicDTO
-  ): Promise<FavoriteComic | undefined> {
-    this.fakeFavoriteComics = this.fakeFavoriteComics.map(comic =>
-      comic.id === comic_id ? { ...comic, ...data } : comic
-    )
-
-    const foundFavoriteComic = this.fakeFavoriteComics.find(
-      comic => comic.id === comic_id
-    )
-
-    return foundFavoriteComic
-  }
 }
