@@ -39,6 +39,20 @@ export default class FavoriteComicsRepository
     return foundFavoriteComics
   }
 
+  async findByMarvelId(
+    comic_id: FavoriteComic['id'],
+    user_id: User['id']
+  ): Promise<FavoriteComic | undefined> {
+    const foundFavoriteComic = await this.ormRepository.findOne({
+      where: {
+        comic_id,
+        user_id
+      }
+    })
+
+    return foundFavoriteComic
+  }
+
   async delete(comic_id: FavoriteComic['id']): Promise<void> {
     await this.ormRepository.delete(comic_id)
   }

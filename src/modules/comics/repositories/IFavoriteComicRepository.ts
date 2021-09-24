@@ -11,6 +11,10 @@ export default interface IFavoriteComicRepository {
     data: ICreateFavoriteFavoriteComicDTO
   ): Promise<FavoriteComic>
   findAll(user_id: User['id']): Promise<FavoriteComic[] | undefined>
+  findByMarvelId(
+    marvel_id: FavoriteComic['id'],
+    user_id: User['id']
+  ): Promise<FavoriteComic | undefined>
   save(
     comic_id: FavoriteComic['id'],
     data: IUpdateFavoriteFavoriteComicDTO
