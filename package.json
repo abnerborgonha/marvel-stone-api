@@ -9,7 +9,6 @@
     "docker:down": "docker-compose down",
     "start:dev": "tsnd -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_module src/shared/infra/http",
     "start:prod": "node dist/shared/infra/http",
-    "deploy": "docker-compose build && docker-compose up -d && clear && echo 'Successfully deployed'",
     "test": "jest",
     "typeorm": "tsnd -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/config/ormconfig.ts"
   },
