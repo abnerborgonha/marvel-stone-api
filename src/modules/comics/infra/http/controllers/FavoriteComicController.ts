@@ -51,6 +51,6 @@ export default class FavoriteComicController {
 
     await deleteFavoriteComic.execute(user_id, id)
 
-    return response.status(204)
+    return response.status(204).json()
   }
 }

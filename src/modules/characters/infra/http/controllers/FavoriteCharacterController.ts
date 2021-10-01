@@ -60,6 +60,6 @@ export default class FavoriteCharacterController {
 
     await deleteFavoriteCharacter.execute(user_id, id)
 
-    return response.status(204)
+    return response.status(204).json()
   }
 }

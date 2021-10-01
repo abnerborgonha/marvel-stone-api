@@ -21,7 +21,7 @@ export class createFavoriteCharacter1632449787450
             default: 'uuid_generate_v4()'
           },
           {
-            name: 'marvel_comic_id',
+            name: 'marvel_character_id',
             type: 'varchar'
           },
           {

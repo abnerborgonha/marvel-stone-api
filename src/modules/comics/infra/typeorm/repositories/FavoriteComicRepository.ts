@@ -40,12 +40,12 @@ export default class FavoriteComicsRepository
   }
 
   async findById(
-    comic_id: FavoriteComic['id'],
+    marvel_comic_id: FavoriteComic['id'],
     user_id: User['id']
   ): Promise<FavoriteComic | undefined> {
     const foundFavoriteComic = await this.ormRepository.findOne({
       where: {
-        id: comic_id,
+        marvel_comic_id,
         user_id
       }
     })
@@ -54,12 +54,12 @@ export default class FavoriteComicsRepository
   }
 
   async findByMarvelId(
-    comic_id: FavoriteComic['id'],
+    marvel_comic_id: FavoriteComic['id'],
     user_id: User['id']
   ): Promise<FavoriteComic | undefined> {
     const foundFavoriteComic = await this.ormRepository.findOne({
       where: {
-        comic_id,
+        marvel_comic_id,
         user_id
       }
     })
@@ -67,7 +67,7 @@ export default class FavoriteComicsRepository
     return foundFavoriteComic
   }
 
-  async delete(comic_id: FavoriteComic['id']): Promise<void> {
-    await this.ormRepository.delete(comic_id)
+  async delete(marvel_comic_id: FavoriteComic['id']): Promise<void> {
+    await this.ormRepository.delete(marvel_comic_id)
   }
 }

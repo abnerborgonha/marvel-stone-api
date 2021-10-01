@@ -33,7 +33,7 @@ export default class DeleteFavoriteCharacterService {
       )
 
     if (!foundFavoriteCharacter)
-      throw new ApiError('Comic does not exists.', 404)
+      throw new ApiError('Character does not exists.', 404)
 
     await this.FavoriteCharacterRepository.delete(foundFavoriteCharacter.id)
   }

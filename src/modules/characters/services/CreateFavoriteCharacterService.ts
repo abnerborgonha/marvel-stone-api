@@ -35,7 +35,7 @@ export default class CreateFavoriteCharacterService {
       )
 
     if (foundExistentFavoriteCharacter)
-      throw new ApiError('Comic already exists.')
+      throw new ApiError('Character already exists.')
 
     const createdFavoriteCharacter =
       await this.FavoriteCharacterRepository.create(user_id, {

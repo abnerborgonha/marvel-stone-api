@@ -40,12 +40,12 @@ export default class FavoriteCharactersRepository
   }
 
   async findById(
-    comic_id: FavoriteCharacter['id'],
+    marvel_character_id: FavoriteCharacter['id'],
     user_id: User['id']
   ): Promise<FavoriteCharacter | undefined> {
     const foundFavoriteCharacter = await this.ormRepository.findOne({
       where: {
-        id: comic_id,
+        marvel_character_id,
         user_id
       }
     })
@@ -54,12 +54,12 @@ export default class FavoriteCharactersRepository
   }
 
   async findByMarvelId(
-    comic_id: FavoriteCharacter['id'],
+    marvel_character_id: FavoriteCharacter['id'],
     user_id: User['id']
   ): Promise<FavoriteCharacter | undefined> {
     const foundFavoriteCharacter = await this.ormRepository.findOne({
       where: {
-        comic_id,
+        marvel_character_id,
         user_id
       }
     })
@@ -67,17 +67,18 @@ export default class FavoriteCharactersRepository
     return foundFavoriteCharacter
   }
 
-  async delete(comic_id: FavoriteCharacter['id']): Promise<void> {
-    await this.ormRepository.delete(comic_id)
+  async delete(marvel_character_id: FavoriteCharacter['id']): Promise<void> {
+    await this.ormRepository.delete(marvel_character_id)
   }
 
   async save(
-    comic_id: FavoriteCharacter['id'],
+    marvel_character_id: FavoriteCharacter['id'],
     data: ICreateFavoriteCharacterDTO
   ): Promise<FavoriteCharacter | undefined> {
-    await this.ormRepository.update(comic_id, { ...data })
+    await this.ormRepository.update(marvel_character_id, { ...data })
 
-    const foundFavoriteCharacter = this.ormRepository.findOne(comic_id)
+    const foundFavoriteCharacter =
+      this.ormRepository.findOne(marvel_character_id)
 
     return foundFavoriteCharacter
   }
